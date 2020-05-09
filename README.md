@@ -97,7 +97,8 @@ When we made request to a specific object, the server responded with an error. I
 
 **Solution**
 We need to change the behavior of our POJO to JSON converter. This leaves me with a bad feeling, because what if you wanted your serialization to fail on empty beans but you've disabled it across the board so you can use Hibernate?
-[Update the application.yaml to change the jackson behavior](./server/src/main/resources/application.yaml))
+
+[Update the application.yaml to change the jackson behavior](./server/src/main/resources/application.yaml)
   ```
     jackson:
       serialization:
