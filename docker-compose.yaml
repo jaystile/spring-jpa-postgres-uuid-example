@@ -1,0 +1,27 @@
+version: '3'
+services:
+  nginx:
+    image: "nginx:latest"
+    ports:
+    - "80:80"
+    networks:
+      - uuid_guide    
+  server:
+    image: "server:latest"
+    ports:
+    - "8080:8080"
+    networks:
+      - uuid_guide    
+  datastore:
+    image: "postgres-uuid_guid:latest"
+    ports:
+    - "5432:5432"
+    environment: 
+      POSTGRES_PASSWORD: "password"
+      UUID_GUIDE_ADMIN: 'uuid_guid_admin'
+      UUID_GUIDE_ADMIN_PASSWORD: 'uuid_guid_password'
+    networks:
+    - uuid_guide
+networks:
+  uuid_guide:
+    driver: bridge
