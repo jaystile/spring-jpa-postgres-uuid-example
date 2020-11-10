@@ -1,5 +1,8 @@
-FROM openjdk:14 AS binaries
-RUN yum install unzip -y
+FROM adoptopenjdk:14 AS binaries
+RUN apt-get update \
+    && apt-get install -y curl \
+    && apt-get install -y zip
+    
 
 # Download and install Gradle
 RUN \
@@ -28,7 +31,7 @@ RUN \
   gradle clean build
 
 # Define default command.
-FROM openjdk:14-alpine AS app
+FROM adoptopenjdk:14 AS app
 WORKDIR /app
 COPY --from=builder /source/build/libs/server-0.0.1-SNAPSHOT.jar ./app.jar
 EXPOSE 8080

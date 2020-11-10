@@ -35,7 +35,7 @@ docker network create --driver bridge network-uuid_guid
 
 # Detached Mode
 export DBPASSWORD='password'
-docker run -d --name postgres-uuid_guid --network network-uuid_guid -e POSTGRES_PASSWORD=${DBPASSWORD} postgres-uuid_guid:latest
+docker run -d --name postgres-uuid_guid --network network-uuid_guid -e POSTGRES_USER='postgres' -e POSTGRES_PASSWORD=${DBPASSWORD} postgres-uuid_guid:latest
 
 ## Hop into the server
 docker exec -it postgres-uuid_guid bash

@@ -26,7 +26,7 @@ This guide has a working example of using a REST endpoint that contains a UUID t
 ```bash
 docker build --tag server ./server
 docker build --tag postgres-uuid_guid ./datastore
-docker-compose up -p uuid_guide
+docker-compose -p uuid_guide up
 ```
 
 ## Access the app
