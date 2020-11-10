@@ -3,7 +3,7 @@
      driver-class-name: org.postgresql.Driver
      username: uuid_guid_admin
      password: uuid_guid_password
-     url: jdbc:postgresql://datastore:5432/uuid_guid_db
+     jdbc-url: jdbc:postgresql://datastore:5432/uuid_guid_db
    jpa:
      properties:
        hibernate:

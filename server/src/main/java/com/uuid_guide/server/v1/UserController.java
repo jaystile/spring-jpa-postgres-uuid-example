@@ -11,12 +11,12 @@ import java.util.UUID;
 
 @RestController()
 @RequestMapping("/user_profile/v1")
-public class UserService {
+public class UserController {
 
     @Autowired
     private UserProfileRepository userProfileRepository;
 
-    public UserService(UserProfileRepository userProfileRepository) {
+    public UserController(UserProfileRepository userProfileRepository) {
         this.userProfileRepository = userProfileRepository;
     }
 

@@ -42,6 +42,10 @@ curl 'http://localhost:8080/user_profile/v1/?page=1&size=2&sort=displayName&dire
 
 # Replace {UUID} with a specific example to get a single example.
 curl http://localhost:8080/user_profile/v1/{UUID}
+
+# get all the groups
+curl 'http://localhost:8080/groups/v1/' | jq .
+
 ```
 
 ## Inspect the database
