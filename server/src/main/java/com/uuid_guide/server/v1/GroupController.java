@@ -3,6 +3,7 @@ package com.uuid_guide.server.v1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,8 +36,13 @@ public class GroupController {
     }
 
     @GetMapping("/")
-    List<Group> getAll() throws Exception {
-        return groupService.getAll();
+    List<Group> getAll(@RequestParam(required = false) String displayName) throws SQLException {
+        if (null == displayName) {
+            return groupService.getAll();
+        }
+        else {
+            return groupService.getAllFilterByDisplayName(displayName);
+        }
     }
 
     @GetMapping("/{id}")

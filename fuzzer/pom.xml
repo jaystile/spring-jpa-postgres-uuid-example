@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.5.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>fuzzer</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>fuzzer</name>
+	<description>Fuzzer</description>
+
+	<properties>
+		<java.version>11</java.version>
+	</properties>
+
+	<repositories>
+		<repository>
+		  <id>gitlab-maven</id>
+		  <url>https://gitlab.com/api/v4/projects/19871573/packages/maven</url>
+		</repository>
+	</repositories>
+	  
+	<pluginRepositories>
+		<pluginRepository>
+		  <id>gitlab-maven</id>
+		  <url>https://gitlab.com/api/v4/projects/19871573/packages/maven</url>
+		</pluginRepository>
+	</pluginRepositories>
+	  
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.gitlab.javafuzz</groupId>
+			<artifactId>javafuzz-maven-plugin</artifactId>
+			<version>1.24</version>
+		</dependency>    
+	  
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+			  <plugin>
+				<groupId>com.gitlab.javafuzz</groupId>
+				<artifactId>javafuzz-maven-plugin</artifactId>
+				<version>1.24</version>
+			  </plugin>
+			</plugins>
+		 </pluginManagement>
+	  
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+		  <id>gitlab-maven</id>
+		  <url>https://gitlab.com/api/v4/projects/19871573/packages/maven</url>
+		</repository>
+	  
+		<snapshotRepository>
+		  <id>gitlab-maven</id>
+		  <url>https://gitlab.com/api/v4/projects/19871573/packages/maven</url>
+		</snapshotRepository>
+	  </distributionManagement>
+  
+
+</project>

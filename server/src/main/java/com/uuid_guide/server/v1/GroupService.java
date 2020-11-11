@@ -48,6 +48,27 @@ public class GroupService {
           return groups;
     }
 
+    public List<Group> getAllFilterByDisplayName(String displayName) throws SQLException {
+
+      // Intentionally trying to introduce a SQL injection attack vector.
+      String query = "select id, display_name from groups WHERE display_name LIKE '" + displayName + "%'";
+      LOG.info("Query: {}", query);
+      Connection conn = dataSource.getConnection();
+      List<Group> groups = new ArrayList<Group>();
+      try (Statement stmt = conn.createStatement()) {
+          ResultSet rs = stmt.executeQuery(query);
+          while (rs.next()) {
+            Group g = new Group();
+            g.setId(UUID.fromString(rs.getString("id")));
+            g.setDisplayName(rs.getString("display_name"));
+            groups.add(g);
+          }
+        } catch (SQLException e) {
+          LOG.error("An error occurred.", e);
+        }
+        return groups;
+    }    
+
 
     Group getById(String id) throws SQLException {
         String query = "select id, display_name from groups where id=?";
@@ -62,10 +83,8 @@ public class GroupService {
               return g;
             }
         } catch (SQLException e) {
-            LOG.error("An error occurred.", e);
+            LOG.error("An error occurred. {}", e.getMessage());
         }
         return null;
-
-    }    
-
+    }
 }

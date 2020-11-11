@@ -44,7 +44,14 @@ curl 'http://localhost:8080/user_profile/v1/?page=1&size=2&sort=displayName&dire
 curl http://localhost:8080/user_profile/v1/{UUID}
 
 # get all the groups
-curl 'http://localhost:8080/groups/v1/' | jq .
+curl 'http://localhost:8080/group/v1/' | jq .
+
+curl 'http://localhost:8080/group/v1/?displayName=S' | jq .
+
+curl 'http://localhost:8080/group/v1/{UUID}' | jq .
+
+curl 'http://localhost:8080/group/v1/{UUID}' | jq .
+
 
 ```
 

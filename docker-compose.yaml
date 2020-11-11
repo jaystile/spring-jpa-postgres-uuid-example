@@ -23,6 +23,10 @@ services:
       UUID_GUIDE_ADMIN_PASSWORD: 'uuid_guid_password'      
     networks:
     - uuid_guide
+  # fuzzer:
+  #   image: "fuzzer:latest"
+  #   networks:
+  #   - uuid_guide
 networks:
   uuid_guide:
     driver: bridge
